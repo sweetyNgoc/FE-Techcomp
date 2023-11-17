@@ -1,0 +1,51 @@
+@use "sass:map";
+@import '../../../../styles/pages/theme';
+
+
+
+
+.footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.messenger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.line-horizontal {
+    height: 1px;
+    background-color: #ccc;
+}
+
+.li-style {
+    list-style: none;
+
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.link-no-underline {
+    text-decoration: none;
+}
+
+.flex-sty {
+    display: flex;
+    gap: 10px;
+}
+
+.footer1 {
+    top: 10px;
+}
+
+.margin10 {
+    margin-top: 10px;
+}

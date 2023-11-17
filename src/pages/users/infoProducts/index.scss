@@ -1,0 +1,10 @@
+@use "sass:map";
+@import '../../../styles/pages/theme';
+
+.bg {
+    background: #eaeaef;
+}
+
+.fix-bg {
+    background: map.get($theme-colors, "main2");
+}

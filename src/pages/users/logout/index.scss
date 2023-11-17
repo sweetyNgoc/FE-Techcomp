@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.message {
+    display: none;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}

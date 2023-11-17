@@ -1,0 +1,56 @@
+@use "sass:map";
+@import "theme";
+@import "responsive";
+
+html,
+body {
+    margin: 0;
+}
+
+* {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1220px;
+    width: 100%;
+    //padding-left: 15px;
+    //padding-right: 15px;
+    //margin: auto;
+}
+
+.r {
+    padding: 5px;
+}
+
+.r-left {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.r-right {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.r-rl {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+@include Responsive($DESKTOP) {}
+
+@include Responsive($MEDIUM_DEVICE) {
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+@include Responsive($SMALL_DEVICES) {}

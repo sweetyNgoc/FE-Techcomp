@@ -1,0 +1,93 @@
+@use "sass:map";
+@import '../../../styles/pages/theme';
+
+.bg {
+    background: #eaeaef;
+}
+
+
+//
+//3
+.fix-bg {
+    background: map.get($theme-colors, "main2");
+}
+
+.fix-bg-div {
+    background: white;
+    margin: 50px;
+}
+
+.carousel {
+    height: 370px;
+    width: 814px;
+    overflow: hidden;
+    //align-items: center;
+    z-index: 0;
+
+    .item {
+        //float: left;
+        height: 370px;
+    }
+
+    .caption {
+        //bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: map.get($theme-colors, "main2");
+        color: white;
+    }
+
+    .controls {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.top2 {
+    display: flex;
+    gap: 10px;
+}
+
+//
+
+.right1 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 300px;
+    border-radius: 5px 5px 5px 5px; //bo tròn
+    background: rgb(229, 193, 193);
+    transform: translateY(50%);
+}
+
+.left1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 300px;
+    border-radius: 5px 5px 5px 5px; //bo tròn
+    background: rgb(229, 193, 193);
+    transform: translateY(50%);
+}
+
+.radius-bg {
+    border-radius: 10px;
+    background: white;
+}
+
+.dis-flex {
+    display: flex;
+    gap: 9px;
+}
+
+.item-body {
+    width: 230px;
+    height: 480px;
+    border: 1px solid rgb(209, 206, 206);
+    border-radius: 10px;
+}
