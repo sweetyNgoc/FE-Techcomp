@@ -132,6 +132,19 @@ const HomePage = () => {
                                 </div>
 
                                 <div className=" dis-flex">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="r-rl">
+                        <div className="radius-bg r-rl">
+                            <div className="r">
+                                <div>
+                                    <h1>Chuột bán chạy</h1>
+                                </div>
+
+                                <div className=" dis-flex">
                                     <div className="item-body ">helo</div>
                                     <div className="item-body">helo</div>
                                     <div className="item-body ">helo</div>
@@ -139,10 +152,6 @@ const HomePage = () => {
                                     <div className="item-body ">helo</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="r-rl">
-                        <div className="radius-bg r-rl">
 
                         </div>
                     </div>
