@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 
-const iProduct = () => {
-    return (
-        <>
-            <div>
-                <div>
+const Product = ({ item }) => {
+  console.log(item);
+  return (
+    <>
+      <div>
+        <div>tên sản phẩm: {item?.name}</div>
+        <div>số lượng: {item?.quantity}</div>
+        <div>giá: {item?.price}</div>
+        <img src={item?.image} />
+      </div>
+    </>
+  );
+};
 
-                </div>
-                <div>
-
-                </div>
-            </div>
-        </>
-    )
-}
-
-export default iProduct;
+export default Product;
