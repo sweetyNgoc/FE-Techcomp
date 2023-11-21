@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Product = ({ item }) => {
-  console.log(item);
+const Product = (index, item) => {
   return (
     <>
       <div>

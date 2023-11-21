@@ -12,7 +12,6 @@ import { HOST } from "../../../constant/Constant";
 import Product from "../../../component/item-product";
 const CarouselExample = () => {
   const imagesC = [h1, h2, h3];
-  console.log(imagesC);
 
   return (
     <Carousel className="carousel img">
