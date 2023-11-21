@@ -8,6 +8,9 @@ import {
     AiOutlineEnvironment,
     AiOutlineFileSearch,
     AiOutlineShoppingCart,
+    AiOutlineFundProjectionScreen,
+    AiOutlineDollar,
+    AiOutlineSafety,
 } from "react-icons/ai";
 import './index.scss';
 import logo from '../../../../assets/users/Techcomp.png';
@@ -119,15 +122,11 @@ const Header = () => {
                             <span>Tổng hợp khuyến mãi</span>
                         </li>
                         <li>
-                            <span><AiOutlineSearch /></span>
+                            <span><AiOutlineFundProjectionScreen /></span>
                             <span>Tin công nghệ</span>
                         </li>
                         <li>
-                            <span><AiOutlineSearch /></span>
-                            <span>Video</span>
-                        </li>
-                        <li>
-                            <span><AiOutlineSearch /></span>
+                            <span><AiOutlineDollar /></span>
                             <span>Hướng dẫn thanh toán</span>
                         </li>
                         <li>
@@ -135,7 +134,7 @@ const Header = () => {
                             <span>Hướng dẫn trả góp</span>
                         </li>
                         <li>
-                            <span><AiOutlineSearch /></span>
+                            <span><AiOutlineSafety /></span>
                             <span>Chính sách bảo hành</span>
                         </li>
                     </ul>
