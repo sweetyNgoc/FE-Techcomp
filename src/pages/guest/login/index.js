@@ -5,7 +5,17 @@ import { HOST } from "../../../constant/Constant";
 
 const LoginAPI = async () => {
   try {
-    const response = await fetch(HOST + "/auth/login", { method: "POST" });
+    const bodyReq = {
+      email: "admin@gmail.com",
+      password: "123456",
+    };
+    const response = await fetch(HOST + "/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bodyReq),
+    });
     const data = await response.json();
     console.log(data);
     return data;

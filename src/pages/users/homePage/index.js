@@ -149,9 +149,7 @@ const HomePage = () => {
           {/* <div>product ? {product.map(item => {<div>item.id item.name<div/>})} : loading</div> */}
           <div>
             {product
-              ? product.map((item, index) => (
-                <Product index={index} item={item} />
-              ))
+              ? product.map((item, index) => <Product item={item} key={index}/>)
               : "Loading"}
           </div>
         </div>

@@ -1,13 +1,14 @@
 import React from "react";
 
-const Product = (index, item) => {
+const Product = ({item}) => {
+  console.log(item);
   return (
     <>
       <div>
         <div>tên sản phẩm: {item?.name}</div>
         <div>số lượng: {item?.quantity}</div>
         <div>giá: {item?.price}</div>
-        <img src={item?.image} />
+        <img style={{ width: "20px", height: "20px" }} src={item?.image} />
       </div>
     </>
   );

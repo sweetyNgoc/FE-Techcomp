@@ -26,7 +26,7 @@ const Header = () => {
     return (
         <>
             <div className="header_top">
-                <video src={video} autoplay loop></video>
+                <video src={video} autoPlay loop></video>
             </div>
             {/* 1########################################*/}
             <div className="color-coll fixed-div">
