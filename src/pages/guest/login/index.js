@@ -2,31 +2,52 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { HOST } from "../../../constant/Constant";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const LoginAPI = async () => {
-  try {
-    const bodyReq = {
-      email: "admin@gmail.com",
-      password: "123456",
-    };
-    const response = await fetch(HOST + "/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bodyReq),
-    });
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
-};
+function Modal({ setOpenModal, userInfo, setUserInfo }) {
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("123456");
 
-function Modal({ setOpenModal }) {
-  LoginAPI();
+  const onEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const onPasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const LoginAPI = async (e) => {
+    e.preventDefault();
+    let data;
+    try {
+      const bodyReq = {
+        email: email,
+        password: password,
+      };
+      const response = await fetch(HOST + "/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyReq),
+      });
+      data = await response.json();
+      if (response.ok) {
+        localStorage.setItem("userInfo", data);
+        setUserInfo(data);
+        setOpenModal(false);
+        (() => toast("đăng nhập thành công"))();
+      } else {
+        console.log(data);
+        (() => toast(data?.message))();
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  };
+
   return (
     <div className="overlay">
       <form>
@@ -41,7 +62,7 @@ function Modal({ setOpenModal }) {
         <div className="con">
           <header className="head-form">
             <h2>Đăng nhập</h2>
-            <p>Hãy nhập Số điện thoại và Mật khẩu của bạn.</p>
+            <p>Hãy nhập Email và Mật khẩu của bạn.</p>
           </header>
           <br></br>
           <div className="field-set">
@@ -50,6 +71,9 @@ function Modal({ setOpenModal }) {
               id="email"
               type="text"
               placeholder="email của bạn"
+              name="email"
+              value={email}
+              onChange={onEmailChange}
               required
             />
 
@@ -61,11 +85,13 @@ function Modal({ setOpenModal }) {
               placeholder="Mật khẩu"
               id="pwd"
               name="password"
+              value={password}
+              onChange={onPasswordChange}
               required
             />
 
             <br></br>
-            <button className="log-in" onClick={LoginAPI}>
+            <button className="log-in" onClick={(e) => LoginAPI(e)}>
               Đăng nhập
             </button>
           </div>
