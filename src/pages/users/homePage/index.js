@@ -95,15 +95,17 @@ const HomePage = () => {
             <div className="radius-bg r-rl">
               <div className="r">
                 <div>
-                  <h1>Laptop GAMING bán chạy</h1>
+                  <h1>Các sản phẩm</h1>
                 </div>
 
                 <div className=" dis-flex">
-                  <div className="item-body ">helo</div>
-                  <div className="item-body">helo</div>
-                  <div className="item-body ">helo</div>
-                  <div className="item-body">helo</div>
-                  <div className="item-body ">helo</div>
+                  {product
+                    ? product.map((item, index) => (
+                        <div className="item-body ">
+                          <Product item={item} key={index} />
+                        </div>
+                      ))
+                    : "Loading"}
                 </div>
               </div>
             </div>
@@ -149,7 +151,9 @@ const HomePage = () => {
           {/* <div>product ? {product.map(item => {<div>item.id item.name<div/>})} : loading</div> */}
           <div>
             {product
-              ? product.map((item, index) => <Product item={item} key={index}/>)
+              ? product.map((item, index) => (
+                  <Product item={item} key={index} />
+                ))
               : "Loading"}
           </div>
         </div>
