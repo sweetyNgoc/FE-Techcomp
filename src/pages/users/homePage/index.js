@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useImperativeHandle } from "react";
 import { useState, useEffect } from "react";
 import "./index.scss";
 import paner from "../../../assets/users/paner.png";
@@ -10,6 +10,7 @@ import h3 from "../../../assets/users/3.png";
 import img1 from "../../../assets/users/img1.png";
 import { HOST } from "../../../constant/Constant";
 import Product from "../../../component/item-product";
+import { useSearchParams } from "react-router-dom";
 const CarouselExample = () => {
   const imagesC = [h1, h2, h3];
 
@@ -56,22 +57,23 @@ const ProductSlider = () => {
   );
 };
 
-const CallAPI = () => {
-  const [data, setData] = useState(null);
+const HomePage = () => {
+  const [product, setProduct] = useState(null);
+  const [productFilter, setProductFilter] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const callAPI = () => {
+    let url = HOST + "/product";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => setProduct(json.productList))
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
-    fetch(HOST + "/product")
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error));
-  }, []);
+    setProductFilter(product?.rows?.slice(0, 10));
+  }, [product]);
 
-  console.log(data?.productList?.rows);
-  return data?.productList?.rows;
-};
-
-const HomePage = () => {
-  const product = CallAPI();
   return (
     <>
       <div className="bg">
@@ -93,20 +95,25 @@ const HomePage = () => {
         <div className="container">
           <div className="r-rl">
             <div className="radius-bg r-rl">
-              <div className="r">
+              <div className="r dis-flex" style={{ flexDirection: "column" }}>
                 <div>
                   <h1>Các sản phẩm</h1>
                 </div>
 
-                <div className=" dis-flex">
-                  {product
-                    ? product.map((item, index) => (
+                <div className="product-container">
+                  {productFilter
+                    ? productFilter.map((item, index) => (
                         <div className="item-body ">
                           <Product item={item} key={index} />
                         </div>
                       ))
                     : "Loading"}
                 </div>
+                {productFilter && (
+                  <button style={{ justifyContent: "center" }}>
+                    xem thêm {product.count - productFilter.length}
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -146,15 +153,6 @@ const HomePage = () => {
           </div>
           <div className="r-rl">
             <div className="radius-bg r-rl"></div>
-          </div>
-
-          {/* <div>product ? {product.map(item => {<div>item.id item.name<div/>})} : loading</div> */}
-          <div>
-            {product
-              ? product.map((item, index) => (
-                  <Product item={item} key={index} />
-                ))
-              : "Loading"}
           </div>
         </div>
       </div>

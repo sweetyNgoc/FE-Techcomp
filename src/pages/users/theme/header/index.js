@@ -1,6 +1,7 @@
 import { Dropdown } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { memo } from "react";
+import { useNavigate } from "react-router-dom";
 //import Popup from "reactjs-popup";
 import {
   AiOutlineSearch,
@@ -23,6 +24,8 @@ const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDKOpen, setModalDKOpen] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [keyWord, setKeyWord] = useState("");
+  const navigate = useNavigate();
 
   const logout = () => {
     setUserInfo(null);
@@ -30,10 +33,19 @@ const Header = () => {
     (() => toast("Đăng xuất"))();
   };
 
+  const onKeyWordChange = (e) => {
+    setKeyWord(e.target.value);
+  };
+
+  const onSearching = () => {
+    navigate(`?keyWord=${keyWord}`);
+    setKeyWord("");
+  };
+
   return (
     <>
       <div className="header_top">
-        <video src={video} autoPlay loop></video>
+        <video src={video} style={{ width: "100%" }} autoPlay loop></video>
       </div>
       {/* 1########################################*/}
       <div className="color-coll fixed-div">
@@ -59,8 +71,16 @@ const Header = () => {
             </div>
             <nav>
               <div className="coll-header--search">
-                <input type="text" placeholder="Search..." />
-                <AiOutlineSearch className="coll-header--search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={keyWord}
+                  onChange={onKeyWordChange}
+                />
+                <AiOutlineSearch
+                  onClick={onSearching}
+                  className="coll-header--search-icon"
+                />
               </div>
             </nav>
             <div>

@@ -26,10 +26,12 @@ function ModalDK({ setOpenModalDK }) {
       console.log(error);
     });
 
+    const dataJson = await response.json();
     if (response.ok) {
       (() => toast("đăng ký thành công"))();
     } else {
-      (() => toast("đăng ký thất bại"))();
+      console.log(dataJson);
+      (() => toast(dataJson.message))();
     }
   };
 
