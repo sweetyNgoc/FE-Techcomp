@@ -38,8 +38,10 @@ const Header = () => {
   };
 
   const onSearching = () => {
-    navigate(`?keyWord=${keyWord}`);
-    setKeyWord("");
+    if(keyWord){
+        navigate(`?keyWord=${keyWord}`);
+        setKeyWord("");
+    }
   };
 
   return (

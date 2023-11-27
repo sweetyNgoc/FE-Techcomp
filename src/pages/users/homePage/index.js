@@ -10,7 +10,7 @@ import h3 from "../../../assets/users/3.png";
 import img1 from "../../../assets/users/img1.png";
 import { HOST } from "../../../constant/Constant";
 import Product from "../../../component/item-product";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 const CarouselExample = () => {
   const imagesC = [h1, h2, h3];
 
@@ -60,7 +60,8 @@ const ProductSlider = () => {
 const HomePage = () => {
   const [product, setProduct] = useState(null);
   const [productFilter, setProductFilter] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParam] = useSearchParams();
+
   const callAPI = () => {
     let url = HOST + "/product";
 
@@ -73,6 +74,22 @@ const HomePage = () => {
   useEffect(() => {
     setProductFilter(product?.rows?.slice(0, 10));
   }, [product]);
+
+  useEffect(() => callAPI(), []);
+
+  useEffect(() => {
+    const keyWord = searchParam.get("keyWord");
+    if (keyWord) {
+      setProductFilter(
+        product?.rows?.filter((item) =>
+          item.name.toLowerCase().includes(keyWord.toLowerCase())
+        )
+      );
+    } else {
+      setProductFilter(product?.rows?.slice(0, 10));
+      console.log("key word null");
+    }
+  }, [searchParam]);
 
   return (
     <>
